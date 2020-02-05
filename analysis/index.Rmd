@@ -1,6 +1,7 @@
 ---
 title: "Home"
 site: workflowr::wflow_site
+author: "Jing Gu"
 output:
   workflowr::wflow_html:
     toc: false

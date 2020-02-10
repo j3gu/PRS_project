@@ -9,4 +9,27 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+This is the guide page for the PRS project. Below are the links to analyses.
+
+### **Project Goal**: 
+The goal is to test a few softwares to build PRSs based on GWAS summary statistics and then predict traits from genotypes from GTEx dataset.
+
+### **Data Availability**: 
+  * Base data: GWAS summary statistics (no invidual genotype data)
+  * Target data: GTEx RNA-Seq individual level genotype data
+
+### **Current GWAS**:
+* Height
+
+### QC steps:
+
+* [QC procedures for base and target dataset](Follow_guidlines.html)
+
+### LDPred
+
+* [Results using LDPred](LDPred_analysis.html)
+
+### Lassosum 
+
+* [Results using Lassosum](Lassosum_analysis.html)
+

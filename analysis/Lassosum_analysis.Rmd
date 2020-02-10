@@ -1,0 +1,27 @@
+---
+title: "Lassosum_analysis"
+author: "Jing Gu"
+date: "2020-02-10"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+### Lassosum
+#### Overview of methods:
+- PGS constructed using summary statistics and a reference panel under a penalized regression framework (LASSO)
+- A general method for choosing tuning parameters without validation data
+- Comparable prediction accuracy using dataset with phenotype
+- Faster and more accurate than LDpred
+
+
+#### validation with independent dataset vs. Pseudovalidation:
+- Validation: r2 = 0.053, s = 0.2 lambda = 0.00127
+- Pseudovalidation: r2 = 0.145 s = 0.2 lambda = 0.00695
+
+```{r}
+
+```
+

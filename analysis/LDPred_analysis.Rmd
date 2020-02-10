@@ -1,0 +1,42 @@
+---
+title: "LDPred_analysis"
+author: "Jing Gu"
+date: "2020-02-10"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+## Introduction
+
+## Softwares for computing polygenic risk scores 
+### Goal: 
+The goal is to compare different softwares that are used to build PRSs for their accuracy in predicting the disease risks. 
+  Data Availability: 
+  * Base data: GWAS summary statistics (no invidual genotype data)
+  * Target data: GTEx RNA-Seq individual level genotype data
+  
+### Available softwares:
+
+1. LDPred: <https://github.com/bvilhjal/ldpred>
+
+### LDPred
+#### Overview of methods:
+  - approximate Bayesian method
+  - Use posterior mean to estimate mean causal effect size from GWAS summary statistics 
+  * Input parameters:
+       - LD radius: number of SNPs that we adjust on each side of a given sNP
+            Recommendation: M/3OOO => 2 Mb LD window size in average
+       - The fraction of causal markers (similar as p value threshold) [11 sets of SNP weights]
+            Optimized using independent validation data
+  
+#### Weakness:
+  - Problems of nonconvergence
+  - Seem to require phenotype data to optimize hyperparameters
+  
+#### R-squared for logistic regression:
+  - Nagelkerke R2 (not implemented in LDPred)
+
+```{r}
+
+```
+

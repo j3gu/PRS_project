@@ -6,15 +6,6 @@ output: workflowr::wflow_html
 editor_options:
   chunk_output_type: console
 ---
-## Introduction
-
-## Softwares for computing polygenic risk scores 
-### Goal: 
-The goal is to compare different softwares that are used to build PRSs for their accuracy in predicting the disease risks. 
-  Data Availability: 
-  * Base data: GWAS summary statistics (no invidual genotype data)
-  * Target data: GTEx RNA-Seq individual level genotype data
-  
 ### Available softwares:
 
 1. LDPred: <https://github.com/bvilhjal/ldpred>

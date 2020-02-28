@@ -1,0 +1,38 @@
+---
+title: "PRSice-2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## PRSice-2: "C+T" method
+### Main features:
+1. automatic strand flipping
+2. LD clumping
+3. evaluate PRS under many p-value thresholds
+
+### Advantages compared to PRSice:
+* no intermediate files generated
+* Main computations in C++ 
+* Run time and memory burden dramatically reduced 
+* Extraction of samples as an option in arguments
+* Handle both genotyped and imputed data
+* Allow calculation of PRS on different inheritance models 
+
+### Why do we need to impute genotypes?
+* A small portion of SNPs overlapped between datasets 
+  - only 31% (222,956) SNPs were found in both GIANT Height and BodyMass Index (BMI) GWAS 
+  
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

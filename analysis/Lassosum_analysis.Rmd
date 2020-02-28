@@ -7,19 +7,38 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Introduction
+### Construct polygenic risk scores for GTEx genotypes using Lassosum
+* Base dataset: 
+  - GIANT height 2014 (summary statistics)
+  - CAD_2017: hg19
+* Target datset: GTEx whole blood
 
-### Lassosum
-#### Overview of methods:
+### Overview of methods:
 - PGS constructed using summary statistics and a reference panel under a penalized regression framework (LASSO)
 - A general method for choosing tuning parameters without validation data
-- Comparable prediction accuracy using dataset with phenotype
+- Comparable prediction accuracy to the dataset with phenotype available
 - Faster and more accurate than LDpred
 
+### QC steps 
+1. base dataset
+* remove ambiguous SNPs (15%)
+* identify and remove duplicated SNPs (0%)
 
-#### validation with independent dataset vs. Pseudovalidation:
-- Validation: r2 = 0.053, s = 0.2 lambda = 0.00127
-- Pseudovalidation: r2 = 0.145 s = 0.2 lambda = 0.00695
+2. target dataset
+### WTCCC 
+* Human Genome Reference Assembly 17 (NCBI build 35)
+* Lift over to hg19
+
+### GTEx 
+* use the lookup table to get the dbSNP reference ID for each SNP from GTEx genotype files.
+* Find overlapping SNPs between base and target dataset and then correct for any mismatch SNP
+* Filtering Steps based on 
+     - filter snps by maf >= 0.05, hwe <1e-6, genotype missing >= 0.01 
+     - filter inidividuals with >= 0.01 genotype missingness (5 excluded)
+     - remove highly correlated SNPs
+     - remove individuals with high or low heterzygosity rates (15 excluded)
+     - remove related individuals π >0.125 (93 excluded)
+
 
 ```{r}
 

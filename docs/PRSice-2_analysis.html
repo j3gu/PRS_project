@@ -9,11 +9,9 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Jing Gu" />
 
-<meta name="date" content="2020-02-10" />
 
-<title>LDPred_analysis</title>
+<title>PRSice-2</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -317,9 +315,7 @@ div.section {
 
 
 
-<h1 class="title toc-ignore">LDPred_analysis</h1>
-<h4 class="author"><em>Jing Gu</em></h4>
-<h4 class="date"><em>2020-02-10</em></h4>
+<h1 class="title toc-ignore">PRSice-2</h1>
 
 </div>
 
@@ -368,7 +364,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -465,105 +461,47 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the R Markdown and HTML files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view them.
+There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/j3gu/test_workflowr/373320f950baa65c3541a3171b11d2f3734d5f21/docs/LDPred_analysis.html" target="_blank">373320f</a>
-</td>
-<td>
-Jing Gu
-</td>
-<td>
-2020-02-10
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/j3gu/test_workflowr/blob/5ab7e3b3143f2a70efe2c56cc9e7e1984849d9fd/analysis/LDPred_analysis.Rmd" target="_blank">5ab7e3b</a>
-</td>
-<td>
-Jing Gu
-</td>
-<td>
-2020-02-10
-</td>
-<td>
-wflow_publish(“analysis/*“)
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
 </div>
-<div id="available-softwares" class="section level3">
-<h3>Available softwares:</h3>
+<div id="prsice-2-ct-method" class="section level2">
+<h2>PRSice-2: “C+T” method</h2>
+<div id="main-features" class="section level3">
+<h3>Main features:</h3>
 <ol style="list-style-type: decimal">
-<li>LDPred: <a href="https://github.com/bvilhjal/ldpred" class="uri">https://github.com/bvilhjal/ldpred</a></li>
+<li>automatic strand flipping</li>
+<li>LD clumping</li>
+<li>evaluate PRS under many p-value thresholds</li>
 </ol>
 </div>
-<div id="ldpred" class="section level3">
-<h3>LDPred</h3>
-<div id="overview-of-methods" class="section level4">
-<h4>Overview of methods:</h4>
+<div id="advantages-compared-to-prsice" class="section level3">
+<h3>Advantages compared to PRSice:</h3>
 <ul>
-<li>approximate Bayesian method</li>
-<li>Use posterior mean to estimate mean causal effect size from GWAS summary statistics</li>
-<li>Input parameters:
-<ul>
-<li>LD radius: number of SNPs that we adjust on each side of a given sNP Recommendation: M/3OOO =&gt; 2 Mb LD window size in average</li>
-<li>The fraction of causal markers (similar as p value threshold) [11 sets of SNP weights] Optimized using independent validation data</li>
-</ul></li>
+<li>no intermediate files generated</li>
+<li>Main computations in C++</li>
+<li>Run time and memory burden dramatically reduced</li>
+<li>Extraction of samples as an option in arguments</li>
+<li>Handle both genotyped and imputed data</li>
+<li>Allow calculation of PRS on different inheritance models</li>
 </ul>
 </div>
-<div id="weakness" class="section level4">
-<h4>Weakness:</h4>
+<div id="why-do-we-need-to-impute-genotypes" class="section level3">
+<h3>Why do we need to impute genotypes?</h3>
 <ul>
-<li>Problems of nonconvergence</li>
-<li>Seem to require phenotype data to optimize hyperparameters</li>
+<li>A small portion of SNPs overlapped between datasets</li>
+<li>only 31% (222,956) SNPs were found in both GIANT Height and BodyMass Index (BMI) GWAS</li>
 </ul>
 </div>
-<div id="r-squared-for-logistic-regression" class="section level4">
-<h4>R-squared for logistic regression:</h4>
-<ul>
-<li>Nagelkerke R2 (not implemented in LDPred)</li>
-</ul>
+</div>
+<div id="including-plots" class="section level2">
+<h2>Including Plots</h2>
+<p>You can also embed plots, for example:</p>
+<p><img src="figure/PRSice-2_analysis.Rmd/pressure-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -594,10 +532,9 @@ loaded via a namespace (and not attached):
  [1] workflowr_1.6.0 Rcpp_1.0.2      digest_0.6.18   later_0.7.5    
  [5] rprojroot_1.3-2 R6_2.3.0        backports_1.1.2 git2r_0.26.1   
  [9] magrittr_1.5    evaluate_0.12   stringi_1.2.4   fs_1.3.1       
-[13] promises_1.0.1  whisker_0.3-2   rmarkdown_1.10  tools_3.5.1    
-[17] stringr_1.3.1   glue_1.3.0      httpuv_1.4.5    yaml_2.2.0     
-[21] compiler_3.5.1  htmltools_0.3.6 knitr_1.20     </code></pre>
-</div>
+[13] promises_1.0.1  rmarkdown_1.10  tools_3.5.1     stringr_1.3.1  
+[17] glue_1.3.0      httpuv_1.4.5    yaml_2.2.0      compiler_3.5.1 
+[21] htmltools_0.3.6 knitr_1.20     </code></pre>
 </div>
 </div>
 

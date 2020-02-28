@@ -326,7 +326,7 @@ div.section {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -335,7 +335,7 @@ div.section {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -344,17 +344,17 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-02-10
+<strong>Last updated:</strong> 2020-02-28
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>test_workflowr/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.5.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -363,12 +363,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -435,16 +435,25 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomj3gutestworkflowrtree5ab7e3b3143f2a70efe2c56cc9e7e1984849d9fdtargetblank5ab7e3ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/j3gu/test_workflowr/tree/5ab7e3b3143f2a70efe2c56cc9e7e1984849d9fd" target="_blank">5ab7e3b</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomj3gutestworkflowrtree373320f950baa65c3541a3171b11d2f3734d5f21targetblank373320fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/j3gu/test_workflowr/tree/373320f950baa65c3541a3171b11d2f3734d5f21" target="_blank">373320f</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomj3gutestworkflowrtree5ab7e3b3143f2a70efe2c56cc9e7e1984849d9fdtargetblank5ab7e3ba" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomj3gutestworkflowrtree373320f950baa65c3541a3171b11d2f3734d5f21targetblank373320fa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
-working directory clean
+Untracked files:
+    Untracked:  analysis/PRSice-2_analysis.Rmd
+    Untracked:  data/compare_prediction_accuracy.png
+    Untracked:  data/compare_run_time_and_memory_usage.png
+
+Unstaged changes:
+    Modified:   analysis/LDPred_analysis.Rmd
+    Modified:   analysis/Lassosum_analysis.Rmd
+    Modified:   analysis/index.Rmd
+
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
@@ -484,6 +493,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/j3gu/test_workflowr/373320f950baa65c3541a3171b11d2f3734d5f21/docs/Lassosum_analysis.html" target="_blank">373320f</a>
+</td>
+<td>
+Jing Gu
+</td>
+<td>
+2020-02-10
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -506,24 +532,54 @@ wflow_publish(“analysis/*“)
 </div>
 </div>
 </div>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<div id="lassosum" class="section level3">
-<h3>Lassosum</h3>
-<div id="overview-of-methods" class="section level4">
-<h4>Overview of methods:</h4>
+<div id="construct-polygenic-risk-scores-for-gtex-genotypes-using-lassosum" class="section level3">
+<h3>Construct polygenic risk scores for GTEx genotypes using Lassosum</h3>
+<ul>
+<li>Base dataset:</li>
+<li>GIANT height 2014 (summary statistics)</li>
+<li>CAD_2017: hg19</li>
+<li>Target datset: GTEx whole blood</li>
+</ul>
+</div>
+<div id="overview-of-methods" class="section level3">
+<h3>Overview of methods:</h3>
 <ul>
 <li>PGS constructed using summary statistics and a reference panel under a penalized regression framework (LASSO)</li>
 <li>A general method for choosing tuning parameters without validation data</li>
-<li>Comparable prediction accuracy using dataset with phenotype</li>
+<li>Comparable prediction accuracy to the dataset with phenotype available</li>
 <li>Faster and more accurate than LDpred</li>
 </ul>
 </div>
-<div id="validation-with-independent-dataset-vs.pseudovalidation" class="section level4">
-<h4>validation with independent dataset vs. Pseudovalidation:</h4>
+<div id="qc-steps" class="section level3">
+<h3>QC steps</h3>
+<ol style="list-style-type: decimal">
+<li>base dataset</li>
+</ol>
 <ul>
-<li>Validation: r2 = 0.053, s = 0.2 lambda = 0.00127</li>
-<li>Pseudovalidation: r2 = 0.145 s = 0.2 lambda = 0.00695</li>
+<li>remove ambiguous SNPs (15%)</li>
+<li>identify and remove duplicated SNPs (0%)</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>target dataset ### WTCCC</li>
+</ol>
+<ul>
+<li>Human Genome Reference Assembly 17 (NCBI build 35)</li>
+<li>Lift over to hg19</li>
+</ul>
+</div>
+<div id="gtex" class="section level3">
+<h3>GTEx</h3>
+<ul>
+<li>use the lookup table to get the dbSNP reference ID for each SNP from GTEx genotype files.</li>
+<li>Find overlapping SNPs between base and target dataset and then correct for any mismatch SNP</li>
+<li>Filtering Steps based on
+<ul>
+<li>filter snps by maf &gt;= 0.05, hwe &lt;1e-6, genotype missing &gt;= 0.01</li>
+<li>filter inidividuals with &gt;= 0.01 genotype missingness (5 excluded)</li>
+<li>remove highly correlated SNPs</li>
+<li>remove individuals with high or low heterzygosity rates (15 excluded)</li>
+<li>remove related individuals π &gt;0.125 (93 excluded)</li>
+</ul></li>
 </ul>
 <br>
 <p>
@@ -552,14 +608,12 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
- [1] workflowr_1.5.0 Rcpp_1.0.2      digest_0.6.18   later_0.7.5    
+ [1] workflowr_1.6.0 Rcpp_1.0.2      digest_0.6.18   later_0.7.5    
  [5] rprojroot_1.3-2 R6_2.3.0        backports_1.1.2 git2r_0.26.1   
  [9] magrittr_1.5    evaluate_0.12   stringi_1.2.4   fs_1.3.1       
 [13] promises_1.0.1  whisker_0.3-2   rmarkdown_1.10  tools_3.5.1    
 [17] stringr_1.3.1   glue_1.3.0      httpuv_1.4.5    yaml_2.2.0     
 [21] compiler_3.5.1  htmltools_0.3.6 knitr_1.20     </code></pre>
-</div>
-</div>
 </div>
 </div>
 

@@ -1,4 +1,4 @@
-# test_workflowr
+# PRS_project
 
 A [workflowr][] project.
 

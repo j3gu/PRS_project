@@ -39,9 +39,9 @@ The goal is to predict traits for GTEx dataset by building polygenic risk scores
 * [Results from PRSice-2](PRSice-2_analysis.html)
 
 ### Metrics for variance explained
-Regular $R^2$ for continuous trait outcomes
-Conceptual proxies pseudo-$R^2$
-- Nagelkerke
-- Lee (liability scale)
+Regular $R^2$ for continuous trait outcomes  
+Conceptual proxies pseudo-$R^2$  
+- Nagelkerke  
+- Lee (liability scale)  
 
 

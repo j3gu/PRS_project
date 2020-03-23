@@ -7,11 +7,14 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## PRSice-2: "C+T" method
+## PRSice-2: "C+T" method ===> Require phenotypes from target datasets
 ### Main features:
 1. automatic strand flipping
 2. LD clumping
-3. evaluate PRS under many p-value thresholds
+3. find the best-fit PRS by obtaining the most significant association with the target traits
+across many p-value threasholds => empricial p-values
+
+
 
 ### Advantages compared to PRSice:
 * no intermediate files generated

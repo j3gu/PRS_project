@@ -69,24 +69,30 @@ qplot(x = variable, y = value, data=x, geom = "boxplot",
 ```{r echo = FALSE}
 par(mfrow = c(1, 2))
 hist(as.numeric(expr[32632, -1:-2]), main = "Before Normalization", xlab = "Expression levels for GAPDH")
-hist(as.numeric(final_expr[final_expr[, 2] == "AC080125.1", -1:-2]), main = "After Normalization", xlab = "Expression levels for GAPDH")
+hist(as.numeric(final_expr[final_expr[, 2] == "GAPDH", -1:-2]), main = "After Normalization", xlab = "Expression levels for GAPDH")
 hist(as.numeric(expr[7966, -1:-2]), main = "Before Normalization", xlab = "Expression levels for AC080125.1	")
 hist(as.numeric(final_expr[final_expr[, 2] == "AC080125.1", -1:-2]), main = "After Normalization", xlab = "Expression levels for AC080125.1")
 
+```
+- Try log2 transformation
+```{r echo = FALSE}
+par(mfrow = c(1,2))
 #try log transformations (cannot do log after being transformed into standard normal)
 nf<-read.table("./output/TMM_norm_factors.txt", header = T)
 tpm<-as.numeric(expr[7966,-1:-2])/nf$norm.factors
-hist(as.numeric(final_expr[final_expr[, 2] == "AC080125.1", -1:-2]), main = "Inverse normal transformation", xlab = "gene expression")
+hist(as.numeric(final_expr[final_expr[, 2] == "AC080125.1", -1:-2]), main = "Inverse normal for AC080125.1", xlab = "gene expression")
 hist(log2(tpm), main = "Log2 transformation", xlab = "gene expression")
+
+tpm<-as.numeric(expr[32632,-1:-2])/nf$norm.factors
+hist(as.numeric(final_expr[final_expr[, 2] == "GAPDH", -1:-2]), main = "Inverse normal for GAPDH", xlab = "gene expression")
+hist(log2(tpm), main = "Log2 transformation", xlab = "gene expression")
+
 # log2 transformation over quantile normalized gene expression 
 # quantile_expr<-read.table("~/projects/polygenic_risks/output/lassosum/wb_gene_expr_quantile_normalized.txt", header = T)
 # hist(as.numeric(quantile_expr[7966, -1:-2]), xlab = "quantile normalized expression levels")
 # hist(log2(as.numeric(quantile_expr[7966, -1:-2])), xlab = "log2(quantile-nomalized expr)")
 ```
-- Log2 transformations
-![Log2 transformation for gene GAPDH](../output/GAPDH_expr_log2_hist.png)
-![Log2 transformation for gene GATA3](../output/GATA3_expr_log2_hist.png)
-![Log2 transformation for gene ](../output/AC080125.1_expr_log2_hist.png)
+
 
 - Covariates:
     1. first five genotype PCs as covariates, which capture the major population structure among GTEx donors. 
@@ -96,15 +102,10 @@ hist(log2(tpm), main = "Log2 transformation", xlab = "gene expression")
 ![PCA results for GTEx](../output/GTEx_PC_covariates.png)
 ### Results
 
-* Evaluate the performance of lassosum on WTCCC dataset
-![validation using phenotypes](../output/results/lassosum_v.png) 
-Best parameter s = 0.5
-
-![pseudovalidation vs. validation](../output/results/lassosum_v_vs_pseudov.png) 
-Best parameter s = 0.2 for pseudovalidation
-![validation vs. split validation](../output/results/lassosum_v_vs_sv.png) 
-
-![Performance of PRSice](../output/results/PRSice-2_plots.png) 
+* Evaluate the performance of lassosum and PRSice-2 on WTCCC dataset
+![Scatter plots for true phenotypic values against PRS](../output/compare_tools.png) 
+![Performance of PRSice](../output/PRS_barplot.png) 
+![Performance of PRSice](../output/PRSice_scatter_plot.png) 
 * Results from GTEx 
 ```{r echo = FALSE}
 summary_output<-function(trait){
@@ -133,12 +134,7 @@ plot(y = y, x = as.numeric(final_expr[final_expr[, 2] == "AC080125.1", -1:-2]),
      xlab = "Transcript levels of gene AC080125.1", ylab = "Polygenic risk scores")
 
 ```
-```{r}
-#plink \
-#    --bfile gtex_geno-temporary \
-#    --make-bed \
-#    --keep gtex_geno.valid.sample \
-#    --out gtex_target.QC \
-#    --extract gtex_geno.QC.snplist 
-```
+
+
+
 

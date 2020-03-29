@@ -27,10 +27,11 @@ editor_options:
     - 291632 out of 442001 SNPs remain after filtering steps (-66%)
       * SNPs have different alleles in base and target dataset due to differences in genome builds
     
-### Results
-#### PRSice-2
-* R-squared reported in the following results was defined as the R-squared of the null model of linear regression. The author claims with binary trait they assume linear regression and logistic regression should generate similar T-statistics. If using logistic regression, it takes much longer to run the whole pipeline.  
-* From the results, we can see that the null model used in PRSice can explain 95% of the variation in phenotypes.
+### Results   
+#### PRSice-2  
+* R-squared reported in the following results was defined as the R-squared of the null model of linear regression. The author claims with binary trait they assume linear regression and logistic regression should generate similar T-statistics. If using logistic regression, it takes much longer to run the whole pipeline.      
+* From the results, we can see that the null model used in PRSice can explain 95% of the variation in phenotypes.    
+
 * Both p-values and R squared values were not adjusted, which could be inflated in our analysis. 
 ![The Barplot of the model fit R-squared at different p-value thresholds.](assets/plots/PRSice_bar_plot.png)
 ![P-values for the model fit against different p-value thresholds](assets/plots/PRSice_scatter_plot.png)
@@ -41,6 +42,7 @@ Three analysis strategies:
 3. pseudovalidation without phenotypes
 
 We computed pseudo-R2 metrics developed by Nagelkerke for all the methods.The chip-heritability for Crohn's Diseases is estimated to be 13%. PRSice clearly overfit the data due to the high R-squared value. The pseudo-validation method used in lassosum also shows it overfit the data. However, the validation and split-validation method used in lassosum do not have enough power to explain the variation in phenotypes using their predicted polygenic risk scores.
+  
 [1] "The R2 for lassosum validation with phenotypes is 0.017"
 [1] "The R2 for lassosum pseudovalidation is 0.268"
 [1] "The R2 for lassosum split validation is 0.017"

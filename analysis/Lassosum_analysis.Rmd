@@ -165,7 +165,8 @@ head(cd, 10)
 head(IBD, 10)
 head(uc, 10)
 ```
-I further performed GO analysis, but for all the diseases genes are not enriched in any specific pathway. The top genes that associated with CD in lassso analysis are slightly enriched in immune related biological process.
+I further performed GO analysis, but for all the diseases genes are not enriched in any specific pathway. The top genes that associated with CD in lassso analysis are slightly enriched in immune related biological process.   
+
 ![Gene Ontology analysis](assets/Lassosum_enriched_genes.png)
 
 

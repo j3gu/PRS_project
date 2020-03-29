@@ -33,13 +33,13 @@ editor_options:
 * From the results, we can see that the null model used in PRSice can explain 95% of the variation in phenotypes.    
 
 * Both p-values and R squared values were not adjusted, which could be inflated in our analysis. 
-![The Barplot of the model fit R-squared at different p-value thresholds.](assets/PRSice_bar_plot.png)
+![The Barplot of the model fit R-squared at different p-value thresholds.](docs/assets/PRSice_bar_plot.png)
 ```{r}
 knitr::include_graphics("assets/PRSice_bar_plot.png")
 ```
 
 
-![P-values for the model fit against different p-value thresholds](assets/PRSice_scatter_plot.png)
+![P-values for the model fit against different p-value thresholds](docs/assets/PRSice_scatter_plot.png)
 #### Lassosum
 Three analysis strategies:
 1. validation with phenotypes
@@ -48,13 +48,13 @@ Three analysis strategies:
 
 We computed pseudo-R2 metrics developed by Nagelkerke for all the methods.The chip-heritability for Crohn's Diseases is estimated to be 13%. PRSice clearly overfit the data due to the high R-squared value. The pseudo-validation method used in lassosum also shows it overfit the data. However, the validation and split-validation method used in lassosum do not have enough power to explain the variation in phenotypes using their predicted polygenic risk scores.
   
-[1] "The R2 for lassosum validation with phenotypes is 0.017"
-[1] "The R2 for lassosum pseudovalidation is 0.268"
-[1] "The R2 for lassosum split validation is 0.017"
-[1] "The R2 for prsice validation with phenotypes is 0.954"
+[1] "The R2 for lassosum validation with phenotypes is 0.017"  
+[1] "The R2 for lassosum pseudovalidation is 0.268"   
+[1] "The R2 for lassosum split validation is 0.017"   
+[1] "The R2 for prsice validation with phenotypes is 0.954"   
 
-![Comparison of prediction performance between two softwares: x-axis shows the polygenic risk scores and y-axis represents the true phenotypes.](assets/scatter_plots_true_pheno_vs_pgs.png)
+![Comparison of prediction performance between two softwares: x-axis shows the polygenic risk scores and y-axis represents the true phenotypes.](docs/assets/scatter_plots_true_pheno_vs_pgs.png)
 
 
 Summary: 
-Both pseudovalidation without phenotype used in lassosum and PRSice-2 can overfit the data. I will try using cross validation to adjust for R-squared in PRSice-2.
+Both pseudovalidation without phenotype used in lassosum and PRSice-2 can overfit the data. I will try cross validations to better assess the performance of PRSice-2.

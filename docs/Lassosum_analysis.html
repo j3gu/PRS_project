@@ -344,7 +344,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-03-24
+<strong>Last updated:</strong> 2020-03-29
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -445,10 +445,26 @@ relative
 <tbody>
 <tr>
 <td style="text-align:left;">
-~/projects/polygenic_risks/workbooks/PRS_project/output/%s_vs_wb_lm_summary.txt
+/home/jinggu/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/lassosum
 </td>
 <td style="text-align:left;">
-output/%s_vs_wb_lm_summary.txt
+output/expr_vs_pgs/lassosum
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+~/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/lassosum//%s_lm_summary.txt
+</td>
+<td style="text-align:left;">
+output/expr_vs_pgs/lassosum/%s_lm_summary.txt
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+~/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/PRSice/%s_lm_summary.txt
+</td>
+<td style="text-align:left;">
+output/expr_vs_pgs/PRSice/%s_lm_summary.txt
 </td>
 </tr>
 </tbody>
@@ -459,18 +475,15 @@ output/%s_vs_wb_lm_summary.txt
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomj3gutestworkflowrtree0f40724f26c86d3bd19393cdb5d69fcbcc1ee68ftargetblank0f40724a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/j3gu/test_workflowr/tree/0f40724f26c86d3bd19393cdb5d69fcbcc1ee68f" target="_blank">0f40724</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomj3gutestworkflowrtree04de766c21a66840c08c169848073f4b044d4d9atargetblank04de766a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/j3gu/test_workflowr/tree/04de766c21a66840c08c169848073f4b044d4d9a" target="_blank">04de766</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomj3gutestworkflowrtree0f40724f26c86d3bd19393cdb5d69fcbcc1ee68ftargetblank0f40724a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomj3gutestworkflowrtree04de766c21a66840c08c169848073f4b044d4d9atargetblank04de766a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
-Ignored files:
-    Ignored:    output/new_results/
-
 Untracked files:
     Untracked:  analysis/.ipynb_checkpoints/
     Untracked:  code/.ipynb_checkpoints/
@@ -480,10 +493,15 @@ Untracked files:
     Untracked:  data/gwas
     Untracked:  data/lassosum
     Untracked:  output/.ipynb_checkpoints/
-    Untracked:  output/PRS_barplot.png
-    Untracked:  output/PRSice_scatter_plot.png
-    Untracked:  output/compare_tools.png
-    Untracked:  output/lassosum_parameters.png
+    Untracked:  output/.~GAPDH_expr_log2_hist.png
+    Untracked:  output/expr_vs_pgs/
+    Untracked:  output/lassosum
+
+Unstaged changes:
+    Deleted:    analysis/images/AC080125.1_expr_log2_hist.png
+    Deleted:    analysis/images/GAPDH_expr_log2_hist.png
+    Deleted:    analysis/images/GATA3_expr_log2_hist.png
+    Deleted:    output/GTEx_PC_covariates.png
 
 </code></pre>
 <p>
@@ -522,6 +540,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/j3gu/test_workflowr/blob/04de766c21a66840c08c169848073f4b044d4d9a/analysis/Lassosum_analysis.Rmd" target="_blank">04de766</a>
+</td>
+<td>
+Jing Gu
+</td>
+<td>
+2020-03-29
+</td>
+<td>
+ran lassosum and PRSice on all three traits
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/j3gu/test_workflowr/02bbd5d123d74bb90a4e0dd5ad2996a63ed7e7c1/docs/Lassosum_analysis.html" target="_blank">02bbd5d</a>
+</td>
+<td>
+Jing Gu
+</td>
+<td>
+2020-03-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -737,7 +789,7 @@ wflow_publish(“analysis/*“)
 <h3>Gene expression Quantification</h3>
 <ul>
 <li>Reads quantification read counts and TPM values were produced with RNA-SeQC v1.1.9*</li>
-<li>Normalization (56200 genes -&gt; 32387 genes)
+<li>Normalization (56200 genes -&gt; 32387 genes) Method-1: TMM + Inverse Normalization
 <ol style="list-style-type: decimal">
 <li>Trimmed mean of M-values (TMM) between each pair of samples {<a href="https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25" class="uri">https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25</a>}
 <ul>
@@ -750,9 +802,11 @@ wflow_publish(“analysis/*“)
 <ul>
 <li>rank-based INT</li>
 <li>convert to ranks, then transform to quantiles</li>
-<li>sample from inverse normal distributions</li>
+<li>sample from inverse normal distributions Method-2: TMM + quantile normalization</li>
 </ul></li>
 <li>Plots for Normalization</li>
+<li>Some genes with very high expression levels make the distribution of reads after quantile normalization have high tails.</li>
+<li>TMM + Inverse normal used for the following analysis</li>
 </ul>
 <pre><code>No id variables; using all as measure variables</code></pre>
 <p><img src="figure/Lassosum_analysis.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -804,6 +858,56 @@ Jing Gu
 </table>
 </div>
 </div>
+<pre><code>No id variables; using all as measure variables</code></pre>
+<p><img src="figure/Lassosum_analysis.Rmd/unnamed-chunk-1-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-2">
+Past versions of unnamed-chunk-1-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-1-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/j3gu/test_workflowr/blob/db9e0c202bee644246d795f9923fb08a2967beda/docs/figure/Lassosum_analysis.Rmd/unnamed-chunk-1-2.png" target="_blank">db9e0c2</a>
+</td>
+<td>
+Jing Gu
+</td>
+<td>
+2020-03-23
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/j3gu/test_workflowr/blob/1b09763dae4a1e5dcf975c722e2913b747071f59/docs/figure/Lassosum_analysis.Rmd/unnamed-chunk-1-2.png" target="_blank">1b09763</a>
+</td>
+<td>
+Jing Gu
+</td>
+<td>
+2020-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <ul>
 <li>Check distributinos for specific genes’s transcripts levels <img src="figure/Lassosum_analysis.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></li>
 </ul>
@@ -831,123 +935,18 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/j3gu/test_workflowr/blob/02bbd5d123d74bb90a4e0dd5ad2996a63ed7e7c1/docs/figure/Lassosum_analysis.Rmd/unnamed-chunk-2-1.png" target="_blank">02bbd5d</a>
+</td>
+<td>
+Jing Gu
+</td>
+<td>
+2020-03-24
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/j3gu/test_workflowr/blob/db9e0c202bee644246d795f9923fb08a2967beda/docs/figure/Lassosum_analysis.Rmd/unnamed-chunk-2-1.png" target="_blank">db9e0c2</a>
-</td>
-<td>
-Jing Gu
-</td>
-<td>
-2020-03-23
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><img src="figure/Lassosum_analysis.Rmd/unnamed-chunk-2-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-2">
-Past versions of unnamed-chunk-2-2.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-2-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/j3gu/test_workflowr/blob/db9e0c202bee644246d795f9923fb08a2967beda/docs/figure/Lassosum_analysis.Rmd/unnamed-chunk-2-2.png" target="_blank">db9e0c2</a>
-</td>
-<td>
-Jing Gu
-</td>
-<td>
-2020-03-23
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<ul>
-<li>Try log2 transformation <img src="figure/Lassosum_analysis.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></li>
-</ul>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
-Past versions of unnamed-chunk-3-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-3-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/j3gu/test_workflowr/blob/db9e0c202bee644246d795f9923fb08a2967beda/docs/figure/Lassosum_analysis.Rmd/unnamed-chunk-3-1.png" target="_blank">db9e0c2</a>
-</td>
-<td>
-Jing Gu
-</td>
-<td>
-2020-03-23
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><img src="figure/Lassosum_analysis.Rmd/unnamed-chunk-3-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-2">
-Past versions of unnamed-chunk-3-2.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-3-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/j3gu/test_workflowr/blob/db9e0c202bee644246d795f9923fb08a2967beda/docs/figure/Lassosum_analysis.Rmd/unnamed-chunk-3-2.png" target="_blank">db9e0c2</a>
 </td>
 <td>
 Jing Gu
@@ -968,11 +967,13 @@ Jing Gu
 <li>donor sex, age, ethnicity</li>
 </ol></li>
 </ul>
-<p><img src="../output/GTEx_PC_covariates.png" alt="PCA results for GTEx" /> ### Results</p>
-<ul>
-<li>Evaluate the performance of lassosum and PRSice-2 on WTCCC dataset <img src="../output/compare_tools.png" alt="Scatter plots for true phenotypic values against PRS" /> <img src="../output/PRS_barplot.png" alt="Performance of PRSice" /> <img src="../output/PRSice_scatter_plot.png" alt="Performance of PRSice" /></li>
-<li>Results from GTEx <img src="figure/Lassosum_analysis.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></li>
-</ul>
+<p><img src="assets/GTEx_PC_covariates.png" alt="PCA results for GTEx" /> ### Methods: Performed linear regression using measured gene expressions against predicted polygenic risk scores for each sample via different methods</p>
+</div>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<div id="lassosum" class="section level4">
+<h4>Lassosum</h4>
+<p><img src="figure/Lassosum_analysis.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
 Past versions of unnamed-chunk-4-1.png
@@ -997,6 +998,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/j3gu/test_workflowr/blob/02bbd5d123d74bb90a4e0dd5ad2996a63ed7e7c1/docs/figure/Lassosum_analysis.Rmd/unnamed-chunk-4-1.png" target="_blank">02bbd5d</a>
+</td>
+<td>
+Jing Gu
+</td>
+<td>
+2020-03-24
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/j3gu/test_workflowr/blob/db9e0c202bee644246d795f9923fb08a2967beda/docs/figure/Lassosum_analysis.Rmd/unnamed-chunk-4-1.png" target="_blank">db9e0c2</a>
 </td>
 <td>
@@ -1012,13 +1024,110 @@ Jing Gu
 </div>
 <pre><code>[1] &quot;The number of significant associations for the trait after FDR correction is 0&quot;</code></pre>
 <p><img src="figure/Lassosum_analysis.Rmd/unnamed-chunk-4-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-2">
+Past versions of unnamed-chunk-4-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/j3gu/test_workflowr/blob/02bbd5d123d74bb90a4e0dd5ad2996a63ed7e7c1/docs/figure/Lassosum_analysis.Rmd/unnamed-chunk-4-2.png" target="_blank">02bbd5d</a>
+</td>
+<td>
+Jing Gu
+</td>
+<td>
+2020-03-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre><code>[1] &quot;The number of significant associations for the trait after FDR correction is 0&quot;</code></pre>
 <p><img src="figure/Lassosum_analysis.Rmd/unnamed-chunk-4-3.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-3">
+Past versions of unnamed-chunk-4-3.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/j3gu/test_workflowr/blob/02bbd5d123d74bb90a4e0dd5ad2996a63ed7e7c1/docs/figure/Lassosum_analysis.Rmd/unnamed-chunk-4-3.png" target="_blank">02bbd5d</a>
+</td>
+<td>
+Jing Gu
+</td>
+<td>
+2020-03-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre><code>[1] &quot;The number of significant associations for the trait after FDR correction is 0&quot;</code></pre>
 </div>
-<div id="gene-ac080125.1-has-the-strongest-association-with-cd-trait" class="section level3">
-<h3>Gene AC080125.1 has the strongest association with CD trait</h3>
-<p><img src="figure/Lassosum_analysis.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="prsice-2" class="section level4">
+<h4>PRSice-2</h4>
+</div>
+<div id="gene-ontology-analysis-performed-at-enrichr-website" class="section level4">
+<h4>Gene Ontology analysis performed at EnrichR website</h4>
+<pre><code> [1] RN7SKP26      CDKL3         CNBD2         RP11-190A12.9 AC116366.6   
+ [6] FAS-AS1       RP11-58K22.4  RP11-177J6.1  CYP17A1-AS1   RP11-331F9.3 
+54592 Levels: 5_8S_rRNA 5S_rRNA 7SK A1BG A1BG-AS1 A1CF A2M A2M-AS1 ... ZZZ3</code></pre>
+<pre><code> [1] RP11-390F4.10 SLC6A6        RP4-785G19.5  RP11-108O10.2 RP11-417O11.5
+ [6] SLC35G6       POLR2J2       SNORA11       RP11-17P16.1  RN7SKP26     
+54592 Levels: 5_8S_rRNA 5S_rRNA 7SK A1BG A1BG-AS1 A1CF A2M A2M-AS1 ... ZZZ3</code></pre>
+<pre><code> [1] RN7SKP271     RP11-108O10.2 SNORA74       CTC-277H1.6   RNU6-418P    
+ [6] CTC-251D13.1  GABRQ         ZNF335        ENTPD6        RP11-543C4.1 
+54592 Levels: 5_8S_rRNA 5S_rRNA 7SK A1BG A1BG-AS1 A1CF A2M A2M-AS1 ... ZZZ3</code></pre>
+<p>I further performed GO analysis, but for all the diseases genes are not enriched in any specific pathway. The top genes that associated with CD in lassso analysis are slightly enriched in immune related biological process. <img src="assets/Lassosum_enriched_genes.png" alt="Gene Ontology analysis" /></p>
+<pre class="r"><code>setwd(&quot;/home/jinggu/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/lassosum&quot;)
+ibd&lt;-read.table(&quot;./IBD_lm_summary.txt&quot;, header = F, skip = 1, sep = &quot; &quot;)
+cd&lt;-read.table(&quot;./CD_lm_summary.txt&quot;, header = F, skip = 1, sep = &quot; &quot;)
+uc&lt;-read.table(&quot;./UC_lm_summary.txt&quot;, header = F, skip = 1, sep = &quot; &quot;)
+write.table(ibd, &quot;./IBD_wb_lm_summary.txt&quot;, quote = F, row.names = rownames(final_expr))
+write.table(cd, &quot;./CD_wb_lm_summary.txt&quot;, quote = F, row.names = rownames(final_expr))
+write.table(uc, &quot;./UC_wb_lm_summary.txt&quot;, quote = F, row.names = rownames(final_expr))</code></pre>
+<pre class="r"><code>setwd(&quot;~/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/lassosum/&quot;)
+write.table(data.frame(cd), &quot;./CD_top_50_genes.txt&quot;, quote = F, row.names = F)
+write.table(data.frame(IBD), &quot;./IBD_top_50_genes.txt&quot;, quote = F, row.names = F)
+write.table(data.frame(uc), &quot;./UC_top_50_genes.txt&quot;, quote = F, row.names = F)</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1060,6 +1169,7 @@ loaded via a namespace (and not attached):
 [33] promises_1.0.1   htmltools_0.3.6  assertthat_0.2.0 colorspace_1.3-2
 [37] httpuv_1.4.5     labeling_0.3     stringi_1.2.4    lazyeval_0.2.1  
 [41] munsell_0.5.0    crayon_1.3.4    </code></pre>
+</div>
 </div>
 </div>
 

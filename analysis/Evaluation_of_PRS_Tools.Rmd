@@ -33,8 +33,13 @@ editor_options:
 * From the results, we can see that the null model used in PRSice can explain 95% of the variation in phenotypes.    
 
 * Both p-values and R squared values were not adjusted, which could be inflated in our analysis. 
-![The Barplot of the model fit R-squared at different p-value thresholds.](assets/plots/PRSice_bar_plot.png)
-![P-values for the model fit against different p-value thresholds](assets/plots/PRSice_scatter_plot.png)
+![The Barplot of the model fit R-squared at different p-value thresholds.](assets/PRSice_bar_plot.png)
+```{r}
+knitr::include_graphics("assets/PRSice_bar_plot.png")
+```
+
+
+![P-values for the model fit against different p-value thresholds](assets/PRSice_scatter_plot.png)
 #### Lassosum
 Three analysis strategies:
 1. validation with phenotypes
@@ -48,7 +53,7 @@ We computed pseudo-R2 metrics developed by Nagelkerke for all the methods.The ch
 [1] "The R2 for lassosum split validation is 0.017"
 [1] "The R2 for prsice validation with phenotypes is 0.954"
 
-![Comparison of prediction performance between two softwares: x-axis shows the polygenic risk scores and y-axis represents the true phenotypes.](assets/plots/scatter_plots_true_pheno_vs_pgs.png)
+![Comparison of prediction performance between two softwares: x-axis shows the polygenic risk scores and y-axis represents the true phenotypes.](assets/scatter_plots_true_pheno_vs_pgs.png)
 
 
 Summary: 

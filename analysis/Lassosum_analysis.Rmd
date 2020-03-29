@@ -144,6 +144,9 @@ summary_output<-function(trait){
   print(paste0("The number of significant associations for the trait after FDR correction is ",   sum(p.adjust(f$p_value, method = "BH") <= 0.05)))
 }
 
+summary_output("CD")
+summary_output("UC")
+summary_output("IBD")
 ```
 
 #### Gene Ontology analysis performed at EnrichR website

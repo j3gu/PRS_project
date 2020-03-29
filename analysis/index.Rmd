@@ -26,17 +26,13 @@ The goal is to predict traits for GTEx dataset by building polygenic risk scores
 
 * [QC procedures for base and target dataset](Follow_guidlines.html)
 
-### LDPred
+### Evaluation of tools
 
-* [Results from LDPred](LDPred_analysis.html)
+* [Lassosum and PRSice-2](Evaluation_of_PRS_Tools.html)
 
-### Lassosum 
+### Results
+* [Results](Lassosum_analysis.html)
 
-* [Results from Lassosum](Lassosum_analysis.html)
-
-### PRSice-2
-
-* [Results from PRSice-2](PRSice-2_analysis.html)
 
 ### Metrics for variance explained
 Regular $R^2$ for continuous trait outcomes  

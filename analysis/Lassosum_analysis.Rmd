@@ -169,7 +169,7 @@ I further performed GO analysis, but for all the diseases genes are not enriched
 ![Gene Ontology analysis](assets/Lassosum_enriched_genes.png)
 
 
-```{r}
+```{r echo = FALSE}
 setwd("/home/jinggu/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/lassosum")
 ibd<-read.table("./IBD_lm_summary.txt", header = F, skip = 1, sep = " ")
 cd<-read.table("./CD_lm_summary.txt", header = F, skip = 1, sep = " ")
@@ -180,7 +180,7 @@ write.table(uc, "./UC_wb_lm_summary.txt", quote = F, row.names = rownames(final_
 
 ```
 
-```{r}
+```{r echo = FALSE}
 setwd("~/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/lassosum/")
 write.table(data.frame(cd), "./CD_top_50_genes.txt", quote = F, row.names = F)
 write.table(data.frame(IBD), "./IBD_top_50_genes.txt", quote = F, row.names = F)

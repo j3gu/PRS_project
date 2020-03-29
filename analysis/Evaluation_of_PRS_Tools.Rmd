@@ -1,0 +1,53 @@
+---
+title: "Evaluations_of_PRS_tools"
+author: "Jing Gu"
+date: "2020-02-10"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+### Construct PGS for WTCCC dataset
+* Base dataset: 
+    -  GWAS CAD_2017 meta-analysis (hg19)
+    -  GWAS Crohn's Diseases (hg19)
+* Target datset:  
+    - WTCCC
+
+### QC steps 
+* base dataset   
+    - remove ambiguous SNPs 
+    - identify and remove duplicated SNPs 
+
+* target dataset   
+1.  WTCCC-Crohn's Disease  
+    - Human Genome Reference Assembly 17 (NCBI build 35)
+    - Lifted over to hg19
+    - Filtered by standard GWAS QCs (-20%)
+    - 291632 out of 442001 SNPs remain after filtering steps (-66%)
+      * SNPs have different alleles in base and target dataset due to differences in genome builds
+    
+### Results
+#### PRSice-2
+* R-squared reported in the following results was defined as the R-squared of the null model of linear regression. The author claims with binary trait they assume linear regression and logistic regression should generate similar T-statistics. If using logistic regression, it takes much longer to run the whole pipeline.  
+* From the results, we can see that the null model used in PRSice can explain 95% of the variation in phenotypes.
+* Both p-values and R squared values were not adjusted, which could be inflated in our analysis. 
+![The Barplot of the model fit R-squared at different p-value thresholds.](assets/plots/PRSice_bar_plot.png)
+![P-values for the model fit against different p-value thresholds](assets/plots/PRSice_scatter_plot.png)
+#### Lassosum
+Three analysis strategies:
+1. validation with phenotypes
+2. split validation with phenotypes
+3. pseudovalidation without phenotypes
+
+We computed pseudo-R2 metrics developed by Nagelkerke for all the methods.The chip-heritability for Crohn's Diseases is estimated to be 13%. PRSice clearly overfit the data due to the high R-squared value. The pseudo-validation method used in lassosum also shows it overfit the data. However, the validation and split-validation method used in lassosum do not have enough power to explain the variation in phenotypes using their predicted polygenic risk scores.
+[1] "The R2 for lassosum validation with phenotypes is 0.017"
+[1] "The R2 for lassosum pseudovalidation is 0.268"
+[1] "The R2 for lassosum split validation is 0.017"
+[1] "The R2 for prsice validation with phenotypes is 0.954"
+
+![Comparison of prediction performance between two softwares: x-axis shows the polygenic risk scores and y-axis represents the true phenotypes.](assets/plots/scatter_plots_true_pheno_vs_pgs.png)
+
+
+Summary: 
+Both pseudovalidation without phenotype used in lassosum and PRSice-2 can overfit the data. I will try using cross validation to adjust for R-squared in PRSice-2.

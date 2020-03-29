@@ -42,6 +42,7 @@ Filtering Steps based on
 - Reads quantification
     read counts and TPM values were produced with RNA-SeQC v1.1.9* 
 - Normalization (56200 genes -> 32387 genes)
+Method-1: TMM + Inverse Normalization
     1. Trimmed mean of M-values (TMM) between each pair of samples
     {https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25}
         * address the problem of a few genes expressed way more higher in one sample than the rest. Other genes may seem to be downregulated compared with spurious expression of a small number of genes
@@ -51,67 +52,72 @@ Filtering Steps based on
       * rank-based INT
       * convert to ranks, then transform to quantiles 
       * sample from inverse normal distributions
-
+Method-2: TMM + quantile normalization
 
 - Plots for Normalization
+* Some genes with very high expression levels make the distribution of reads after quantile normalization have high tails.
+* TMM + Inverse normal used for the following analysis
 ```{r echo = FALSE}
 library(ggplot2)
 library(reshape2)
-final_expr<-read.table("~/projects/polygenic_risks/output/lassosum/wb_gene_expr_normalized.txt", header = T)
+final_expr<-read.table("~/projects/polygenic_risks/output/lassosum/wb_gene_expr_normalized.txt.gz", header = T)
+final_expr_qn<-read.table("~/projects/polygenic_risks/output/lassosum/wb_gene_expr_TMM_quantile_normalized.txt.gz", header = T)
 expr<-read.table("~/scratch-midway2/whole_blood_gene_expr.gz", header = T)
 y<-read.table("./output/CD_best_pgs.txt", header = T)
-full_samples<-read.table("~/scratch-midway2/gtex_plink/gtex_geno.valid.sample", header = T)
-x<-melt(final_expr[, 20:30])
+full_samples<-read.table("~/scratch-midway2/gtex_plink/gtex_genotype.QC.fam", header = T)
+x<-melt(final_expr[, c(10:15, 50:55, 200:205, 400:405)])
 qplot(x = variable, y = value, data=x, geom = "boxplot",
- main="Normalized expression levels across individuals") + xlab("Sample ID") + ylab("Normalized gene expression levels")
+ main="TMM + inverse normal") + xlab("Sample ID") + ylab("Normalized gene expression levels")
+x<-melt(final_expr_qn[, c(10:15, 50:55, 200:205, 400:405)])
+qplot(x = variable, y = value, data=x, geom = "boxplot",
+ main="TMM + quantile normalization") + xlab("Sample ID") + ylab("Normalized gene expression levels")
 ```
 - Check distributinos for specific genes's transcripts levels
 ```{r echo = FALSE}
 par(mfrow = c(1, 2))
 hist(as.numeric(expr[32632, -1:-2]), main = "Before Normalization", xlab = "Expression levels for GAPDH")
 hist(as.numeric(final_expr[final_expr[, 2] == "GAPDH", -1:-2]), main = "After Normalization", xlab = "Expression levels for GAPDH")
-hist(as.numeric(expr[7966, -1:-2]), main = "Before Normalization", xlab = "Expression levels for AC080125.1	")
-hist(as.numeric(final_expr[final_expr[, 2] == "AC080125.1", -1:-2]), main = "After Normalization", xlab = "Expression levels for AC080125.1")
+# hist(as.numeric(expr[7966, -1:-2]), main = "Before Normalization", xlab = "Expression levels for AC080125.1	")
+# hist(as.numeric(final_expr[final_expr[, 2] == "AC080125.1", -1:-2]), main = "After Normalization", xlab = "Expression levels for AC080125.1")
 
 ```
-- Try log2 transformation
+
 ```{r echo = FALSE}
-par(mfrow = c(1,2))
-#try log transformations (cannot do log after being transformed into standard normal)
-nf<-read.table("./output/TMM_norm_factors.txt", header = T)
-tpm<-as.numeric(expr[7966,-1:-2])/nf$norm.factors
-hist(as.numeric(final_expr[final_expr[, 2] == "AC080125.1", -1:-2]), main = "Inverse normal for AC080125.1", xlab = "gene expression")
-hist(log2(tpm), main = "Log2 transformation", xlab = "gene expression")
-
-tpm<-as.numeric(expr[32632,-1:-2])/nf$norm.factors
-hist(as.numeric(final_expr[final_expr[, 2] == "GAPDH", -1:-2]), main = "Inverse normal for GAPDH", xlab = "gene expression")
-hist(log2(tpm), main = "Log2 transformation", xlab = "gene expression")
-
-# log2 transformation over quantile normalized gene expression 
+#- Try log2 transformation
+# par(mfrow = c(1,2))
+# #try log transformations (cannot do log after being transformed into standard normal)
+# nf<-read.table("./output/TMM_norm_factors.txt", header = T)
+# tpm<-as.numeric(expr[7966,-1:-2])/nf$norm.factors
+# hist(as.numeric(final_expr[final_expr[, 2] == "AC080125.1", -1:-2]), main = "Inverse normal for AC080125.1", xlab = "gene expression")
+# hist(log2(tpm), main = "Log2 transformation", xlab = "gene expression")
+# 
+# tpm<-as.numeric(expr[32632,-1:-2])/nf$norm.factors
+# hist(as.numeric(final_expr[final_expr[, 2] == "GAPDH", -1:-2]), main = "Inverse normal for GAPDH", xlab = "gene expression")
+# hist(log2(tpm), main = "Log2 transformation", xlab = "gene expression")
+# 
+# # log2 transformation over quantile normalized gene expression 
 # quantile_expr<-read.table("~/projects/polygenic_risks/output/lassosum/wb_gene_expr_quantile_normalized.txt", header = T)
 # hist(as.numeric(quantile_expr[7966, -1:-2]), xlab = "quantile normalized expression levels")
 # hist(log2(as.numeric(quantile_expr[7966, -1:-2])), xlab = "log2(quantile-nomalized expr)")
 ```
-
 
 - Covariates:
     1. first five genotype PCs as covariates, which capture the major population structure among GTEx donors. 
     2. WGS sequencing platform and library protocol
     3. donor sex, age, ethnicity
 
-![PCA results for GTEx](../output/GTEx_PC_covariates.png)
-### Results
+![PCA results for GTEx](assets/GTEx_PC_covariates.png)
+### Methods:
+Performed linear regression using measured gene expressions against predicted polygenic risk scores for each sample via different methods
 
-* Evaluate the performance of lassosum and PRSice-2 on WTCCC dataset
-![Scatter plots for true phenotypic values against PRS](../output/compare_tools.png) 
-![Performance of PRSice](../output/PRS_barplot.png) 
-![Performance of PRSice](../output/PRSice_scatter_plot.png) 
-* Results from GTEx 
+### Results
+#### Lassosum 
+
 ```{r echo = FALSE}
 summary_output<-function(trait){
-  f<-read.table(sprintf("~/projects/polygenic_risks/workbooks/PRS_project/output/%s_vs_wb_lm_summary.txt", trait), header = F, skip = 1, sep = " ")
+  f<-read.table(sprintf("~/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/lassosum//%s_lm_summary.txt", trait), header = F, skip = 1, sep = " ")
   par(mfrow = c(1, 2))
-  colnames(f)<-c("Gene","Estimate", "Std_error", "t_value", "p_value")
+  colnames(f)<-c("Estimate", "Std_error", "t_value", "p_value")
   hist(f$p_value, xlab = "p-values", main = paste0(trait, "_trait"))
   qqplot(y = -log10(f$p_value), x = -log10(1:length(f$p_value)/length(f$p_value)), ylab = "-log10(Observerd P-values)", xlab = "-log10(Expected P-values)")
   abline(a = 0, b = 1, col = "red")
@@ -122,16 +128,77 @@ summary_output("CD")
 summary_output("UC")
 summary_output("IBD")
 
+
 ```
-### Gene AC080125.1 has the strongest association with CD trait
+
+
+#### PRSice-2
+```{r echo=FALSE}
+summary_output<-function(trait){
+  f<-read.table(sprintf("~/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/PRSice/%s_lm_summary.txt", trait), header = F, skip = 1, sep = " ")
+  par(mfrow = c(1, 2))
+  colnames(f)<-c("Gene","Estimate", "Std_error", "t_value", "p_value")
+  hist(f$p_value, xlab = "p-values", main = paste0(trait, "_trait"))
+  qqplot(y = -log10(f$p_value), x = -log10(1:length(f$p_value)/length(f$p_value)), ylab = "-log10(Observerd P-values)", xlab = "-log10(Expected P-values)")
+  abline(a = 0, b = 1, col = "red")
+  print(paste0("The number of significant associations for the trait after FDR correction is ",   sum(p.adjust(f$p_value, method = "BH") <= 0.05)))
+}
+
+```
+
+#### Gene Ontology analysis performed at EnrichR website
+```{r echo=FALSE}
+setwd("~/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/lassosum/")
+pseudogenes<-read.table("~/resources/genomes/pseudogene_geneIDs.txt", header = F)
+top.genes<-function(trait){
+  f<-read.table(sprintf("./%s_wb_lm_summary.txt", trait), header = F, skip = 1, sep = " ")
+  colnames(f)<-c("Gene","Estimate", "Std_error", "t_value", "p_value")
+  new_f<-f[!(f[,1] %in% pseudogenes$V1),]
+  sig.genes<-new_f[order(new_f$p_value, decreasing = F)[1:50], 1]
+  index<-unlist(lapply(sig.genes, function(i){which(as.character(expr[,1]) == as.character(i))}))
+  return(expr[index, 2])
+}
+cd<-top.genes("CD")
+IBD<-top.genes("IBD")
+uc<-top.genes("UC")
+head(cd, 10)
+head(IBD, 10)
+head(uc, 10)
+```
+I further performed GO analysis, but for all the diseases genes are not enriched in any specific pathway. The top genes that associated with CD in lassso analysis are slightly enriched in immune related biological process.
+![Gene Ontology analysis](assets/Lassosum_enriched_genes.png)
+
+
+```{r}
+setwd("/home/jinggu/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/lassosum")
+ibd<-read.table("./IBD_lm_summary.txt", header = F, skip = 1, sep = " ")
+cd<-read.table("./CD_lm_summary.txt", header = F, skip = 1, sep = " ")
+uc<-read.table("./UC_lm_summary.txt", header = F, skip = 1, sep = " ")
+write.table(ibd, "./IBD_wb_lm_summary.txt", quote = F, row.names = rownames(final_expr))
+write.table(cd, "./CD_wb_lm_summary.txt", quote = F, row.names = rownames(final_expr))
+write.table(uc, "./UC_wb_lm_summary.txt", quote = F, row.names = rownames(final_expr))
+
+```
+
+```{r}
+setwd("~/projects/polygenic_risks/workbooks/PRS_project/output/expr_vs_pgs/lassosum/")
+write.table(data.frame(cd), "./CD_top_50_genes.txt", quote = F, row.names = F)
+write.table(data.frame(IBD), "./IBD_top_50_genes.txt", quote = F, row.names = F)
+write.table(data.frame(uc), "./UC_top_50_genes.txt", quote = F, row.names = F)
+
+```
+
+
+
+
 ```{r echo = FALSE}
-samples<-unlist(lapply(colnames(final_expr)[-1:-2], function(i){
-    return(paste(strsplit(i, "[.]")[[1]][1:2], collapse = "-"))
-}))
-#subsets of y in the same order as expression matrix
-y<-y[unlist(lapply(samples, function(i){which(full_samples[,1] == i)})),]
-plot(y = y, x = as.numeric(final_expr[final_expr[, 2] == "AC080125.1", -1:-2]),
-     xlab = "Transcript levels of gene AC080125.1", ylab = "Polygenic risk scores")
+# samples<-unlist(lapply(colnames(final_expr)[-1:-2], function(i){
+#     return(paste(strsplit(i, "[.]")[[1]][1:2], collapse = "-"))
+# }))
+# #subsets of y in the same order as expression matrix
+# y<-y[unlist(lapply(samples, function(i){which(full_samples[,1] == i)})),]
+# plot(y = y, x = as.numeric(final_expr[final_expr[, 2] == "AC080125.1", -1:-2]),
+#      xlab = "Transcript levels of gene AC080125.1", ylab = "Polygenic risk scores")
 
 ```
 

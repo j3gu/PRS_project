@@ -32,12 +32,14 @@ editor_options:
 * R-squared reported in the following results was defined as the R-squared of the null model of linear regression. The author claims with binary trait they assume linear regression and logistic regression should generate similar T-statistics. If using logistic regression, it takes much longer to run the whole pipeline.      
 * From the results, we can see that the null model used in PRSice can explain 95% of the variation in phenotypes.    
 
-* Both p-values and R squared values were not adjusted, which could be inflated in our analysis. 
+* Both p-values and R squared values were not adjusted, which could be inflated in our analysis.  
+
 ![The Barplot of the model fit R-squared at different p-value thresholds.](assets/PRSice_bar_plot.png)
 
 ![P-values for the model fit against different p-value thresholds](assets/PRSice_scatter_plot.png)
 
 #### Lassosum  
+
 Three analysis strategies:    
 1. validation with phenotypes  
 2. split validation with phenotypes  
